@@ -1,0 +1,14 @@
+
+
+//* NEW COMPANIES:
+Amber's conglomerate corporation just acquired some new companies(Each following same hierarchy).
+Given the table schemas below, write a query to print the company_code, founder name, total number of lead managers, total number of senior managers, total number of managers, and total number of employees. Order your output by ascending company_code.
+The tables may contain duplicate records.
+The company_code (C12) is string, so the sorting should be numeric. For example, if the company_codes are C_1, C_2, and C_10, then the string ascending company_codes will give C_1, C_10, and C_2.
+ *// 
+
+SELECT Company.company_code, Company.founder, COUNT(DISTINCT lead_manager_code),COUNT(DISTINCT senior_manager_code), COUNT(DISTINCT manager_code), COUNT(employee_code)
+FROM Employee
+INNER JOIN Company ON Employee.company_code = Company.company_code
+GROUP BY Company.company_code, Company.founder
+ORDER BY CAST(TRIM('C' FROM Company.company_code) AS FLOAT) ASC ;
