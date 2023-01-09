@@ -1,0 +1,21 @@
+
+//* certificate Qs *//
+
+#BASIC
+
+SELECT student_information.roll_number, name
+FROM student_information
+INNER JOIN examination_marks ON student_information.roll_number = examination_marks.roll_number
+WHERE subject_one + subject_two + subject_three <100 ;
+
+
+#INTERMEDIATE
+
+SELECT sku, product_name
+FROM PRODUCT
+LEFT JOIN INVOICE_ITEM ON PRODUCT.id = INVOICE_ITEM.product_id
+WHERE invoice_id IS NULL 
+ORDER BY sku ASC ;
+
+#ADVANCED
+
